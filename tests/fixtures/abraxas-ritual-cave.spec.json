@@ -1,0 +1,196 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "environment",
+  "identity": {
+    "name": "Abraxas ritual cave",
+    "slug": "abraxas-ritual-cave",
+    "tier": 2,
+    "classification": "event",
+    "concept": "Near the top of the Cascadia valley is a natural cave whose interior has been magically enlarged by an Abraxas cult ritual. The ritual culminates in the sacrifice of Dr. Elias Voss while a partially opened portal pours chaotic magic into the altar chamber.",
+    "description": "A mountain cave swollen beyond natural geometry by Abraxas ritual power, where a blood-lit altar and half-open threshold pour chaos into the world while Dr. Elias Voss waits to be sacrificed."
+  },
+  "design": {
+    "encounterPurpose": "A Tier 2 finale event that pressures the party to stop the ritual, save Dr. Elias Voss, and survive escalating reality distortion while choosing whether to rush the altar, disrupt the portal, control the battlefield, or fight through the cultists.",
+    "impulses": [
+      "Complete the sacrifice",
+      "Widen the threshold breach",
+      "Separate rescuers from the altar",
+      "Feed on fear, blood, and hesitation",
+      "Twist space into a weapon"
+    ],
+    "tags": [
+      "abraxas",
+      "ritual",
+      "cave",
+      "event",
+      "portal",
+      "sacrifice",
+      "threshold-breach",
+      "cascadia"
+    ],
+    "references": {
+      "official": [
+        "Tier 2 Event environments",
+        "Event environments with countdown pressure and battlefield transformation"
+      ],
+      "cybermancy": [
+        "Seattle Underflow Grid",
+        "Abraxas modified Deer",
+        "Altered Raven",
+        "Altered Coyote",
+        "Altered Threshold Cougar"
+      ]
+    },
+    "designerNotes": "The encounter is dangerous primarily through countdown pressure, forced positioning, Stress, and vulnerability rather than repeated raw damage. The altar is intentionally disruptible so the players can act on the environment rather than only endure it."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Start Ritual Countdown (6) when PCs enter the altar chamber or cultists notice them. Make Voss, altar, portal, and sacrifice visibly actionable.",
+        "featureRefs": [
+          "Ritual of the Open Threshold"
+        ]
+      },
+      {
+        "label": "Default Pressure",
+        "text": "Force choices between rescuing Voss, disrupting the altar, controlling enemies, and surviving; cultists should obstruct or advance the rite.",
+        "featureRefs": [
+          "Ritual of the Open Threshold"
+        ]
+      },
+      {
+        "label": "On PC Fear",
+        "text": "Advance the Ritual Countdown. If Fear occurred during movement, consider Warped Cave Geometry to separate or displace the PC.",
+        "featureRefs": [
+          "Ritual of the Open Threshold",
+          "Warped Cave Geometry"
+        ]
+      },
+      {
+        "label": "On GM Fear Spend",
+        "text": "Remember Portal Backwash. If Fear specifically intensifies the rite, also advance the Ritual Countdown.",
+        "featureRefs": [
+          "Portal Backwash",
+          "Ritual of the Open Threshold"
+        ]
+      },
+      {
+        "label": "Attack the Problem",
+        "text": "Use Altar of Opening Progress (8); reward strong fictional leverage with extra progress. Completion stops cultist-driven ritual advancement.",
+        "featureRefs": [
+          "Altar of Opening",
+          "Ritual of the Open Threshold"
+        ]
+      }
+    ],
+    "goal": "Create escalating objective pressure: actions spent fighting are actions not spent rescuing Voss or shutting down the ritual."
+  },
+  "mechanics": {
+    "difficulty": 15,
+    "impulses": [
+      "Complete the sacrifice",
+      "Widen the threshold breach",
+      "Separate rescuers from the altar",
+      "Feed on fear, blood, and hesitation",
+      "Twist space into a weapon"
+    ],
+    "potentialAdversaries": [
+      "Abraxas cultists",
+      "Altered Raven",
+      "Altered Coyote",
+      "Altered Threshold Cougar",
+      "Abraxas modified Deer"
+    ],
+    "features": [
+      {
+        "name": "Ritual of the Open Threshold",
+        "featureType": "countdown",
+        "rules": "Start a Ritual Countdown (6) when the party first enters the altar chamber or when the cultists become aware of them. Advance the countdown by 1 whenever a PC rolls with Fear, a cultist spends their action furthering the ritual, or the GM spends a Fear to intensify the rite. When the countdown triggers, Dr. Elias Voss is sacrificed unless the PCs have already freed him, and the portal surges fully open for a moment. All creatures in the altar chamber must make an Instinct Reaction Roll. Those who fail mark 2 Stress and become Vulnerable until they roll with Hope. Those who succeed mark 1 Stress.",
+        "automation": "text",
+        "tags": [
+          "countdown",
+          "fear-trigger",
+          "stress",
+          "vulnerable",
+          "objective"
+        ]
+      },
+      {
+        "name": "Warped Cave Geometry",
+        "featureType": "triggered",
+        "rules": "When a PC rolls with Fear while moving or repositioning, the cave briefly folds around them. The GM may move that PC to a nearby precarious position, separate them from an ally by one zone, or place them nearer to a hazard, cultist, or the portal edge. If no reposition makes sense, the PC instead marks 1 Stress as vertigo and impossible angles overwhelm them.",
+        "automation": "text",
+        "tags": [
+          "fear-trigger",
+          "movement",
+          "forced-movement",
+          "terrain",
+          "stress"
+        ]
+      },
+      {
+        "name": "Altar of Opening",
+        "featureType": "special",
+        "rules": "The central altar anchors the ritual. A PC adjacent to the altar can attempt to disrupt it with an appropriate action: sabotage, counter-ritual, magical interference, hacking or Resonance analysis of embedded devices, or desecration of the sigils. Build a Progress Countdown (8) representing disruption of the ritual focus. Strong fictional leverage or especially appropriate abilities may tick the countdown by 2. When the countdown completes, the portal stabilizes downward and the Ritual Countdown can no longer be advanced by cultist actions, only by Fear results already in motion. If the altar is disrupted before the Ritual Countdown completes, Dr. Elias Voss can still be saved even if the chamber remains dangerous.",
+        "automation": "text",
+        "tags": [
+          "countdown",
+          "objective",
+          "ritual",
+          "portal",
+          "interaction"
+        ]
+      },
+      {
+        "name": "Portal Backwash",
+        "featureType": "triggered",
+        "rules": "Whenever a creature comes within Very Close of the portal, or whenever the GM spends a Fear, chaotic backwash lashes out. The target must make a Presence Reaction Roll. On a failure, they mark 1 HP or 2 Stress, their choice, and suffer an intrusive vision or momentary loss of orientation. On a success, they mark 1 Stress. Creatures already marked by the ritual's corruption may also display visible mutations, whispers, or shadow-doubling.",
+        "automation": "text",
+        "tags": [
+          "fear-spend",
+          "reaction-roll",
+          "stress",
+          "damage",
+          "portal"
+        ]
+      },
+      {
+        "name": "Choir of Ruin",
+        "featureType": "passive",
+        "rules": "The cave carries layered whispers, chanting, and impossible harmonics from the half-open threshold. PCs attempting calm communication, concentration, or precise coordination across the chamber have disadvantage unless they are within Close range of one another or have first created some form of cover, silence, or anchoring effect. A PC who takes a moment to listen intentionally may ask one brief question about the ritual or cave. The answer is true but cryptic.",
+        "automation": "text",
+        "tags": [
+          "debuff",
+          "communication",
+          "investigation",
+          "lore"
+        ]
+      }
+    ]
+  },
+  "art": {
+    "environment": {
+      "path": "modules/cybermancy/assets/images/environments/abraxas-ritual-cave.png",
+      "aspectRatio": "3:2",
+      "prompt": "Cinematic semi-photorealistic 3:2 environment art of a natural Cascade mountain cave whose interior has been impossibly enlarged by Abraxas ritual magic. A vast altar chamber dominates the scene with a blood-black stone altar where restrained Dr. Elias Voss is prepared for sacrifice. Behind the altar a partially opened portal tears through reality, emitting red-black-violet chaotic light and distorted shadow geometry. Spiral ritual markings, braziers, bones, hanging charms, wet stone, and warped cave walls suggest a threshold breach. Occult, high-tension, infernal-resonant atmosphere, no text, labels, logos, or UI."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": false
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Approved by GM after Front-End v1 design review; generated through Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

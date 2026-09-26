@@ -1,0 +1,214 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Cascade Burrowtail",
+    "slug": "cascade-burrowtail",
+    "tier": 1,
+    "classification": "minion",
+    "concept": "An apparently ordinary Cascade chipmunk or squirrel altered into a parasitic ambush predator. It approaches curiously, bites, latches onto exposed flesh, and attempts to burrow under the skin while the scent of blood draws more of its kind.",
+    "description": "A fluffy, curious Cascade squirrel or chipmunk whose harmless appearance hides backward-hooked teeth and a horrific instinct to burrow into living flesh."
+  },
+  "design": {
+    "encounterPurpose": "A deceptively harmless Tier 1 Minion that creates urgent three-beat extraction pressure rather than raw damage, turning a cute wilderness encounter into body-horror action economy pressure.",
+    "motivesAndTactics": [
+      "approach innocently",
+      "swarm exposed targets",
+      "latch on",
+      "burrow into flesh",
+      "call more of the colony"
+    ],
+    "tags": [
+      "animal",
+      "cascade",
+      "chipmunk",
+      "squirrel",
+      "minion",
+      "parasite",
+      "body-horror",
+      "burrowing",
+      "swarm"
+    ],
+    "references": {
+      "official": [
+        "Rotted Zombie",
+        "Jagged Knife Lackey",
+        "Group Attack (Minion family)"
+      ],
+      "cybermancy": [
+        "Sewerjaw Gator",
+        "Raz Eels"
+      ]
+    },
+    "designerNotes": "Approved Minion redesign. Uses the official Minion (3) parameterized family. Leap and Burrow, Under the Skin, and Blood Calls the Colony are bespoke biological countdown/escalation mechanics. APPROVED ATTACK DAMAGE IS FLAT 3 PHYSICAL. Canonical spec v1 requires dice fields, so the attack damage object carries a 1d4 compatibility placeholder; Package Builder output and PDF preserve the approved flat 3 damage. This schema limitation is documented in validation rather than silently changing the design."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Approach harmlessly and get into Melee before revealing the threat.",
+        "featureRefs": [
+          "Cute Until It Isn’t"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "Needle Bite an exposed target, preferably one without a Burrowing Countdown.",
+        "featureRefs": []
+      },
+      {
+        "label": "On HP Marked",
+        "text": "Resolve Leap and Burrow; once per GM turn, also trigger Blood Calls the Colony.",
+        "featureRefs": [
+          "Leap and Burrow",
+          "Blood Calls the Colony"
+        ]
+      },
+      {
+        "label": "Pressure",
+        "text": "Spread new Burrowtails across exposed targets while attached victims decide whether to spend actions extracting them.",
+        "featureRefs": [
+          "Blood Calls the Colony"
+        ]
+      },
+      {
+        "label": "Remember",
+        "text": "Tick the countdown after each victim action. Embedded Burrowtails do not take spotlights; remember Under the Skin on Fear triggers.",
+        "featureRefs": [
+          "Leap and Burrow",
+          "Under the Skin"
+        ]
+      }
+    ],
+    "goal": "Turn one successful bite into an escalating triage problem before the parasites get under the skin."
+  },
+  "mechanics": {
+    "difficulty": 12,
+    "damageThresholds": {
+      "major": null,
+      "severe": null
+    },
+    "hitPoints": 1,
+    "stress": 1,
+    "attack": {
+      "name": "Needle Bite",
+      "bonus": 1,
+      "range": "melee",
+      "damage": {
+        "count": 1,
+        "die": "d4",
+        "bonus": 0,
+        "types": [
+          "physical"
+        ],
+        "customFormula": "3"
+      }
+    },
+    "experiences": [
+      {
+        "name": "Scurrying",
+        "value": 2
+      },
+      {
+        "name": "Natural Camouflage",
+        "value": 2
+      }
+    ],
+    "features": [
+      {
+        "name": "Minion (3)",
+        "featureType": "passive",
+        "rules": "The Burrowtail is defeated when it takes any damage. For every 3 damage a PC deals to the Burrowtail, defeat an additional Burrowtail within range that the attack would succeed against.",
+        "automation": "text",
+        "tags": [
+          "minion",
+          "group",
+          "durability",
+          "damage-scaling"
+        ]
+      },
+      {
+        "name": "Cute Until It Isn’t",
+        "featureType": "passive",
+        "rules": "Before a Burrowtail attacks or openly reveals its altered anatomy, creatures have disadvantage on rolls to recognize it as dangerous.",
+        "automation": "text",
+        "tags": [
+          "deception",
+          "ambush",
+          "stealth"
+        ]
+      },
+      {
+        "name": "Leap and Burrow",
+        "featureType": "reaction",
+        "rules": "When a target marks HP from the Burrowtail’s Needle Bite, the Burrowtail latches onto them instead of remaining as a normal adversary. Start a Burrowing Countdown (3) on that target and remove the Burrowtail token from normal play. At the end of each action the affected target takes, tick the countdown down by 1. Before it triggers, the target or an ally within Melee range can use an action to attempt to remove the Burrowtail with a successful Finesse or Strength Roll (12). On a success, the Burrowtail is removed and defeated.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "countdown",
+          "attach",
+          "control"
+        ]
+      },
+      {
+        "name": "Under the Skin",
+        "featureType": "passive",
+        "rules": "When the Burrowing Countdown triggers, the Burrowtail disappears beneath the target’s skin and can no longer be harmed by ordinary attacks. Whenever that creature rolls with Fear, or the GM spends a Fear while that creature is in the scene, they mark 1 HP. Removing the embedded Burrowtail requires surgery, appropriate medical treatment, Cybermancy, or another plausible intervention.",
+        "automation": "text",
+        "tags": [
+          "body-horror",
+          "fear-trigger",
+          "persistent-damage",
+          "medical"
+        ]
+      },
+      {
+        "name": "Blood Calls the Colony",
+        "featureType": "reaction",
+        "rules": "When a Burrowtail successfully deals enough damage with Needle Bite for the target to mark HP, immediately place 1d4 additional Cascade Burrowtail Minions within Close range. This feature can trigger only once per GM turn.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "summon",
+          "reinforcement",
+          "minion"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/cascade-burrowtail.png",
+      "aspectRatio": "4:5",
+      "width": 1000,
+      "height": 1250,
+      "prompt": "Cinematic semi-photorealistic portrait of an ordinary-looking Pacific Northwest chipmunk or squirrel in a mossy Cascade mountain forest near Seattle. It remains fluffy and cute at first glance, but its jaw is distended during an attack, revealing backward-hooked needle teeth and a bloodied mouth. Other normal-looking chipmunks watch from mossy logs behind it. Believable animal anatomy first, subtle body-horror mutation second, damp forest light, no text, labels, UI, frames, or stat blocks."
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/cascade-burrowtail-token.png",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Square Foundry token matching the Cascade Burrowtail portrait. Tight readable face and upper-body composition of the same altered chipmunk/squirrel, cute fur and dark eyes contrasted with a distended jaw and hooked teeth. Thick distressed dark-metal circular rim nearly touching the square edges; corners outside the circle solid black. No text, labels, logos, or transparent corners."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Mechanical design approved by GM; produced under Cybermancy Pipeline Contract and Package Builder v1.1. Flat-damage schema compatibility exception documented in validation. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "environment",
+  "identity": {
+    "name": "Cascadia Mountain Valley",
+    "slug": "cascadia-mountain-valley",
+    "tier": 1,
+    "classification": "exploration",
+    "concept": "A healthy, beautiful mountain valley east of Seattle near Selka's tribe. It offers a calm, restorative interlude before the ritual corruption higher up the valley becomes apparent.",
+    "description": "A peaceful Cascadian mountain valley of clear water, old-growth forest, and alpine light, partially protected by Selka's people from the corruption spreading farther uphill."
+  },
+  "design": {
+    "encounterPurpose": "A restorative Tier 1 exploration environment that lowers the party's guard, reinforces Selka's connection to the land, and delivers the first subtle clues that something unhealthy lies farther up the valley.",
+    "impulses": [
+      "Soothe and restore weary travelers",
+      "Conceal the wound higher up the valley",
+      "Reward curiosity with subtle clues",
+      "Let the party feel safe before that safety frays"
+    ],
+    "tags": [
+      "cascadia",
+      "mountain",
+      "forest",
+      "exploration",
+      "selka",
+      "protected",
+      "beautiful",
+      "false-security"
+    ],
+    "references": {
+      "official": [
+        "Tier 1 Exploration environments"
+      ],
+      "cybermancy": [
+        "Seattle Underflow Grid"
+      ]
+    },
+    "designerNotes": "Built as a deliberately non-hostile Tier 1 Exploration environment. It mirrors the Underflow Grid exploration structure but replaces immediate hazard pressure with calm, restoration, and delayed tension escalation."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Establish the lower valley as beautiful, safe, and healthy. Let PCs engage with the landscape and give Selka authority to notice details others miss.",
+        "featureRefs": [
+          "Sheltered Wilds",
+          "Clear Water, Open Sky"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "Reward observation with Quiet Signs. Give useful clues even on failure, but let failure cost time or movement toward danger.",
+        "featureRefs": [
+          "Quiet Signs"
+        ]
+      },
+      {
+        "label": "On Fear or Relaxation",
+        "text": "Trigger Beauty That Hides the Cut: reveal one unmistakably wrong detail without making the lower valley hostile.",
+        "featureRefs": [
+          "Beauty That Hides the Cut"
+        ]
+      },
+      {
+        "label": "Transition",
+        "text": "Make Selka's Green Boundary perceptible before crossing it; beyond it, protection and safety begin to fall away.",
+        "featureRefs": [
+          "Selka's Green Boundary"
+        ]
+      },
+      {
+        "label": "Remember",
+        "text": "This environment restores and foreshadows; it is not intended to pressure the party through direct danger.",
+        "featureRefs": [
+          "Sheltered Wilds"
+        ]
+      }
+    ],
+    "goal": "Let the party lower its guard, recover, and connect with the land before revealing corruption ahead."
+  },
+  "mechanics": {
+    "difficulty": 10,
+    "impulses": [
+      "Soothe and restore weary travelers",
+      "Conceal the wound higher up the valley",
+      "Reward curiosity with subtle clues",
+      "Let the party feel safe before that safety frays"
+    ],
+    "potentialAdversaries": [
+      "Altered Raven",
+      "Altered Coyote",
+      "Altered Threshold Cougar"
+    ],
+    "features": [
+      {
+        "name": "Sheltered Wilds",
+        "featureType": "passive",
+        "rules": "The valley is unusually calm and healthy. The first time each PC takes a moment to breathe, observe, forage, or simply appreciate the landscape, they may clear 1 Stress or gain a useful sense of calm, belonging, or perspective.\n\nWhat detail of the land makes it immediately clear that this place has been protected?\nWhat moment of peace tempts the party to lower its guard?",
+        "automation": "text",
+        "tags": [
+          "restoration",
+          "calm",
+          "stress"
+        ]
+      },
+      {
+        "name": "Quiet Signs",
+        "featureType": "action",
+        "rules": "A PC who studies tracks, birdsong, scents, stream flow, or the behavior of nearby animals can make an Instinct Roll. Critical Success: learn two useful truths about what lies farther up the valley. Success with Hope: learn one clear clue and one reassuring sign of local protection. Success with Fear: learn one true clue, but also notice something unsettling. Any Failure: the valley still yields a clue, but only after time passes or the party drifts farther toward danger.\n\nWhat sign reveals that the corruption ahead is affecting animal behavior?\nWhat sign confirms this lower valley is still healthier than the land above?",
+        "automation": "text",
+        "tags": [
+          "investigation",
+          "clue"
+        ]
+      },
+      {
+        "name": "Selka's Green Boundary",
+        "featureType": "special",
+        "rules": "Parts of the valley still carry the protective influence of Selka's people. Sacred markers, old paths, careful stewardship, and Resonance-harmonic practices have kept this lower valley healthier than the terrain above. While the party remains within this protected zone, altered wildlife is less likely to attack directly, rest and conversation feel easier, and signs of corruption appear faint, distant, or incomplete.\n\nWhere is the boundary visible only if someone knows how to read the land?\nWhat happens when the party steps beyond it?",
+        "automation": "text",
+        "tags": [
+          "boundary",
+          "protection",
+          "selka"
+        ]
+      },
+      {
+        "name": "Beauty That Hides the Cut",
+        "featureType": "triggered",
+        "rules": "When a PC rolls with Fear, or when the party becomes especially relaxed, reveal a soft disruption in the peace: a carcass where no predator should have left it, a patch of forest gone suddenly silent, birds lifting all at once from a distant tree line, a smear of blood near water, or a faint ritual mark hidden beneath moss or bark.\n\nWhat beautiful vista frames the first truly wrong detail?\nWhat clue arrives just late enough that the players have already started to feel safe?",
+        "automation": "text",
+        "tags": [
+          "fear-trigger",
+          "reveal",
+          "foreshadowing"
+        ]
+      },
+      {
+        "name": "Clear Water, Open Sky",
+        "featureType": "passive",
+        "rules": "If the party chooses to pause here for conversation, observation, or planning, the valley is an ideal place to surface character moments, tribal context from Selka, and emotional decompression before the hunt intensifies. Treat this as a favorable environment for regrouping, asking questions, noticing emotional beats, or giving Selka additional narrative authority about the land.\n\nWhat does Selka recognize here that no one else in the party would?\nWhat does the valley seem to promise that the upper mountain will betray?",
+        "automation": "text",
+        "tags": [
+          "roleplay",
+          "regroup",
+          "story"
+        ]
+      }
+    ]
+  },
+  "art": {
+    "environment": {
+      "path": "modules/cybermancy/assets/images/environments/cascadia-mountain-valley.png",
+      "aspectRatio": "3:2",
+      "prompt": "Beautiful, serene, non-threatening 3:2 landscape environment east of Seattle in the Cascade mountains: a healthy mountain valley with old-growth evergreen forest, a clear cold stream, mossy boulders, ferns, wildflowers, sunlit or softly overcast alpine light, distant ridgeline and open sky, cinematic semi-photorealistic style, peaceful and restorative mood, no people, no text, no UI, no visible threat."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": false
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Approved by GM after Front-End v1 design review; generated through Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

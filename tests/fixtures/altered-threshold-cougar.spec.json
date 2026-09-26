@@ -1,0 +1,194 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Altered Threshold Cougar",
+    "slug": "altered-threshold-cougar",
+    "tier": 2,
+    "classification": "skulk",
+    "concept": "A Cascade cougar warped by Abraxas-aligned ritual bleed, able to gather shadows around itself, move fractionally out of phase, and silence isolated prey during a deadly ambush.",
+    "description": "A ritual-warped mountain cougar whose outline never quite agrees with itself: forelimbs double during a strike, shadows pool around its body, and it can vanish from one patch of darkness to emerge from another."
+  },
+  "design": {
+    "encounterPurpose": "A Tier 2 ambush predator that controls when combat begins, isolates a target, suppresses calls for help, and repeatedly breaks contact to attack from darkness.",
+    "motivesAndTactics": [
+      "stalk unseen",
+      "isolate stragglers",
+      "silence prey",
+      "strike from concealment",
+      "reposition through shadow",
+      "retreat before retaliation"
+    ],
+    "tags": [
+      "animal",
+      "cougar",
+      "abraxas",
+      "ritual-corruption",
+      "shadow",
+      "stealth",
+      "ambush",
+      "pacific-northwest"
+    ],
+    "references": {
+      "official": [
+        "Stonewraith",
+        "Masked Thief",
+        "Siren",
+        "Rocky Ambush",
+        "Stonestrider"
+      ],
+      "cybermancy": [
+        "Sewerjaw Gator",
+        "Abraxas modified Deer"
+      ]
+    },
+    "designerNotes": "Tier 2 Skulk built around concealment, mobility, and an opening control strike. Living Shadow adapts the role purpose of Stonewraith's Stonestrider without its damage immunity. Silent Threshold Pounce adapts Rocky Ambush: the same Hidden + Stress + Very Close leap and Agility/Instinct Reaction Roll (15), replacing temporary Restrained with Vulnerable plus the custom Silenced narrative condition. Threshold Skip is a restrained shadow-reposition feature that supports the Skulk loop without adding attack economy."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Begin concealed where the fiction allows, stalk the party, and identify an isolated or exposed target before revealing the Cougar.",
+        "featureRefs": [
+          "Living Shadow"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "From Hidden, use Silent Threshold Pounce against isolated prey, especially when silencing or separating that target matters.",
+        "featureRefs": [
+          "Silent Threshold Pounce",
+          "Living Shadow"
+        ]
+      },
+      {
+        "label": "Reset",
+        "text": "After striking, break contact and seek darkness or cover. Use Threshold Skip when Stress meaningfully restores distance, concealment, or a new angle.",
+        "featureRefs": [
+          "Threshold Skip",
+          "Living Shadow"
+        ]
+      },
+      {
+        "label": "If Cornered",
+        "text": "Use Claws & Bite, but take the first good opportunity to disengage and resume the ambush cycle.",
+        "featureRefs": []
+      },
+      {
+        "label": "Remember",
+        "text": "Living Shadow adds +2 Difficulty while Hidden. Threshold Skip repositions only; it does not grant another attack.",
+        "featureRefs": [
+          "Living Shadow",
+          "Threshold Skip"
+        ]
+      }
+    ],
+    "goal": "Make the Cougar a disappearing ambush predator: dangerous while it controls contact, much weaker when PCs deny concealment."
+  },
+  "mechanics": {
+    "difficulty": 14,
+    "damageThresholds": {
+      "major": 7,
+      "severe": 13
+    },
+    "hitPoints": 5,
+    "stress": 4,
+    "hordeHp": 1,
+    "attack": {
+      "name": "Claws & Bite",
+      "bonus": 3,
+      "range": "melee",
+      "damage": {
+        "count": 1,
+        "die": "d8",
+        "bonus": 3,
+        "types": [
+          "physical"
+        ]
+      }
+    },
+    "experiences": [
+      {
+        "name": "Ambush Predator",
+        "value": 3
+      }
+    ],
+    "features": [
+      {
+        "name": "Living Shadow",
+        "featureType": "passive",
+        "rules": "While the Cougar is in dim light, darkness, heavy foliage, or similar visual cover, it can become Hidden without needing complete physical concealment. While Hidden in this way, its Difficulty increases by +2 against attacks until it next attacks or is clearly revealed.",
+        "automation": "text",
+        "tags": [
+          "hidden",
+          "stealth",
+          "difficulty-modifier",
+          "shadow"
+        ]
+      },
+      {
+        "name": "Threshold Skip",
+        "featureType": "action",
+        "rules": "Mark a Stress to move from one shadow or area of dim light to another within Far range. This movement appears instantaneous and does not require a clear path between the two points.",
+        "automation": "text",
+        "tags": [
+          "movement",
+          "reposition",
+          "teleport",
+          "stress-cost",
+          "shadow"
+        ]
+      },
+      {
+        "name": "Silent Threshold Pounce",
+        "featureType": "action",
+        "rules": "While Hidden, mark a Stress and choose a target within Very Close range. The Cougar skips into Melee range as it attacks. The target must make an Agility or Instinct Reaction Roll (15). On a failure, they take 2d8 physical damage, become Vulnerable and Silenced until the end of their next action. On a success, they take half damage and do not become Silenced or Vulnerable. Silenced: The target cannot speak, shout warnings, or otherwise produce intentional vocal sound. This does not prevent physical actions, movement, or non-vocal communication.",
+        "automation": "text",
+        "tags": [
+          "attack",
+          "hidden",
+          "ambush",
+          "physical-damage",
+          "reaction-roll",
+          "vulnerable",
+          "control",
+          "stress-cost",
+          "silenced"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/altered-threshold-cougar.png",
+      "aspectRatio": "4:5",
+      "prompt": "Cinematic semi-photorealistic portrait of a Pacific Northwest mountain cougar in a rain-dark Cascade forest at night, recognizably natural cougar anatomy but warped by subtle Abraxas ritual Resonance. Its wet tawny-blackened fur carries faint ember-red spiral scar patterns beneath the coat, its eyes glow dimly, and its body appears fractionally out of phase: one forelimb and the edge of its shoulders show a subtle doubled afterimage in two possible positions. Unnaturally deep shadows gather around its paws and flank, forming overlapping silhouettes that do not perfectly match its posture. The cougar stalks low and silent through wet ferns and cedar roots, with distant red-orange ritual glow far behind. Strong readable predator silhouette, teal-blue forest darkness against restrained ember ritual light, believable anatomy first and supernatural corruption second, no text, labels, logos, UI, borders, or stat block."
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/altered-threshold-cougar-token.png",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Square Foundry VTT token matching the Altered Threshold Cougar portrait exactly. Tight three-quarter composition of the same cougar's head, shoulders, and upper forelimbs, glowing restrained ember eyes, subtle spiral ritual scars beneath wet fur, and a faint doubled shadow silhouette suggesting its body is out of phase. Dark rain-soaked Cascade forest behind it. Thick distressed dark-metal circular rim nearly touching the square edges, corners outside the circle solid black. Strong readable silhouette at token scale. No text, labels, logos, or transparent corners."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Approved by GM after Front-End mechanical review; package build requested immediately afterward. The user's approval message referred to 'altered coyote,' interpreted from immediate context as approval of the Altered Threshold Cougar spec. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

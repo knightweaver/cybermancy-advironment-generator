@@ -1,0 +1,214 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Clevermask",
+    "slug": "clevermask",
+    "tier": 1,
+    "classification": "social",
+    "concept": "A raccoon-like Cascade animal rendered startlingly intelligent by ritual Resonance. It is curious rather than hostile, communicates through self-invented gestures, and becomes a helpful guide when treated kindly and fed.",
+    "description": "An ordinary-looking Cascade raccoon whose bright eyes and precise forepaw gestures reveal startling intelligence. It approaches sentient creatures with curiosity, attempts to communicate in a self-invented sign language, and flees immediately from violence."
+  },
+  "design": {
+    "encounterPurpose": "A non-hostile Tier 1 Social adversary that rewards kindness, observation, and communication with exploration help rather than combat rewards. It demonstrates that ritual alteration can produce intelligence without producing malice.",
+    "motivesAndTactics": [
+      "investigate strangers",
+      "communicate",
+      "barter for food",
+      "learn",
+      "avoid violence",
+      "guide trusted creatures"
+    ],
+    "tags": [
+      "animal",
+      "raccoon",
+      "cascade",
+      "social",
+      "intelligent",
+      "guide",
+      "communication",
+      "non-hostile"
+    ],
+    "references": {
+      "official": [
+        "Tier 1 Social adversaries",
+        "The Runaround / Exile / Preferential Treatment social-role family"
+      ],
+      "cybermancy": [
+        "Sewerjaw Gator",
+        "Raz Eels"
+      ]
+    },
+    "designerNotes": "Mechanical design approved by GM. Core Social mechanics are bespoke because the official Tier 1 Social corpus skews toward coercive NPC behavior rather than a non-hostile animal intelligence encounter. Nope adapts established escape/reposition behavior to make violence terminate the scene rather than start a conventional fight."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Observe the PCs curiously and try to communicate. Investigate unfamiliar technology or obvious Cybermancy.",
+        "featureRefs": [
+          "Oh! What's That?"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "Use Hands That Speak to exchange simple ideas. Gentle treatment plus food can make the Clevermask Friendly automatically.",
+        "featureRefs": [
+          "Hands That Speak",
+          "Food Makes Friends"
+        ]
+      },
+      {
+        "label": "If Friendly",
+        "text": "Answer what it could reasonably know and guide the PCs through familiar terrain or toward an observable clue.",
+        "featureRefs": [
+          "Bright-Eyed Guide"
+        ]
+      },
+      {
+        "label": "If Threatened",
+        "text": "Trigger Nope and escape if possible. Use Defensive Scratch only if cornered with no plausible escape.",
+        "featureRefs": [
+          "Nope"
+        ]
+      },
+      {
+        "label": "Remember",
+        "text": "After a PC successfully communicates once, that PC has advantage on later attempts to understand its gestures this scene.",
+        "featureRefs": [
+          "Hands That Speak"
+        ]
+      }
+    ],
+    "goal": "Reward patience, curiosity, and kindness with information and exploration help; violence should normally end the encounter."
+  },
+  "mechanics": {
+    "difficulty": 12,
+    "damageThresholds": {
+      "major": 5,
+      "severe": 10
+    },
+    "hitPoints": 4,
+    "stress": 3,
+    "attack": {
+      "name": "Defensive Scratch",
+      "bonus": 0,
+      "range": "melee",
+      "damage": {
+        "count": 1,
+        "die": "d4",
+        "bonus": 1,
+        "types": [
+          "physical"
+        ]
+      }
+    },
+    "experiences": [
+      {
+        "name": "Observation",
+        "value": 3
+      },
+      {
+        "name": "Scavenging",
+        "value": 2
+      }
+    ],
+    "features": [
+      {
+        "name": "Hands That Speak",
+        "featureType": "passive",
+        "rules": "The Clevermask communicates through an improvised language of hand signs, posture, pointing, facial expression, and objects. A creature that spends a short time attempting to communicate with it can make an Instinct or Presence Roll (12). On a success, exchange one reasonably simple idea or question. On a success with Hope, exchange two ideas or communicate one moderately complicated concept. On a failure, the meaning remains unclear, but the Clevermask does not become hostile. Once a creature has successfully communicated with the Clevermask, they have advantage on subsequent rolls to understand its gestures during the scene.",
+        "automation": "text",
+        "tags": [
+          "social",
+          "communication",
+          "presence",
+          "instinct"
+        ]
+      },
+      {
+        "name": "Food Makes Friends",
+        "featureType": "passive",
+        "rules": "If a creature treats the Clevermask gently and offers it food, it becomes Friendly toward that creature without requiring a roll. While Friendly, the Clevermask will answer simple questions as best it can, warn the party about nearby dangers it knows about, retrieve or point out small objects, follow the group for a reasonable distance, and act as a guide through territory it knows. Attacking it immediately ends this benefit.",
+        "automation": "text",
+        "tags": [
+          "social",
+          "friendly",
+          "food",
+          "guide"
+        ]
+      },
+      {
+        "name": "Bright-Eyed Guide",
+        "featureType": "passive",
+        "rules": "While the party willingly follows a Friendly Clevermask through terrain it knows, the first PC to make a roll to navigate, track, locate a route, or avoid a natural hazard has advantage. Additionally, once per scene, the Clevermask can point out something the PCs might otherwise miss: a hidden trail, tracks, a safe crossing, a concealed entrance, an approaching predator, an object, or a recent disturbance. The GM should only reveal something the Clevermask could plausibly have observed.",
+        "automation": "text",
+        "tags": [
+          "exploration",
+          "advantage",
+          "guide",
+          "discovery"
+        ]
+      },
+      {
+        "name": "Oh! What's That?",
+        "featureType": "reaction",
+        "rules": "When a PC displays an unfamiliar object, activates unusual technology, performs obvious Cybermancy, or otherwise does something the Clevermask has never seen before, it may cautiously approach to investigate. A PC who allows it to examine the object can immediately attempt Hands That Speak with advantage.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "curiosity",
+          "social",
+          "advantage"
+        ]
+      },
+      {
+        "name": "Nope",
+        "featureType": "reaction",
+        "rules": "When the Clevermask is targeted by an attack, takes damage, or reasonably believes a creature intends to capture it, it immediately moves anywhere within Far range toward cover or an escape route and becomes Hidden if possible. If there is a plausible route out of the scene, it escapes. The Clevermask does not return during that scene unless the GM has a compelling fictional reason.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "escape",
+          "movement",
+          "hidden"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/clevermask.png",
+      "aspectRatio": "4:5",
+      "width": 1000,
+      "height": 1250,
+      "prompt": "Cinematic semi-photorealistic portrait of Clevermask, an ordinary believable Pacific Northwest raccoon in a mossy Cascade mountain forest near Seattle. The raccoon is standing alert on a fallen log and using its forepaws in an expressive improvised sign gesture toward unseen travelers. Its eyes show unusual intelligence and curiosity, but there are no monstrous mutations and no hostility. Soft forest light, ferns, wet moss, subtle Resonance atmosphere only, strong readable silhouette, no text, labels, UI, frames, clothing, jewelry, or stat blocks."
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/clevermask-token.png",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Square Foundry token matching the same Clevermask raccoon portrait. Tight frontal three-quarter view of the same curious raccoon with one forepaw raised in an expressive sign gesture, intelligent bright eyes, realistic fur and facial mask, immediately readable at token scale. Thick distressed dark-metal circular rim nearly touching square edges; corners outside circle solid black. No text, labels, logos, clothing, jewelry, or transparent corners."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Approved by GM after Front-End design review; generated through Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}
