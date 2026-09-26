@@ -1,0 +1,224 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Abraxas Cult Leader",
+    "slug": "abraxas-cult-leader",
+    "tier": 2,
+    "classification": "leader",
+    "concept": "The local leader of the Cult of the Eternal Night and master of the Abraxas ritual, a huge troll-like entity who revels in violence, rage, and chaos while blending brutal physical combat with reality-warping magic.",
+    "description": "A hulking troll-like hierophant transformed by prolonged communion with Abraxas. Massive tusk-like fangs jut from a wide mouth, ritual scars crawl across their flesh, and violence sends them into visible ecstasy."
+  },
+  "design": {
+    "encounterPurpose": "A Tier 2 ritual-chamber centerpiece who functions as a true Leader by driving cult allies into coordinated frenzy while remaining a dangerous melee bruiser and chaotic battlefield controller in their own right.",
+    "motivesAndTactics": [
+      "break order",
+      "revel in violence",
+      "drive followers into frenzy",
+      "protect the ritual",
+      "hurl enemies through warped space"
+    ],
+    "tags": [
+      "abraxas",
+      "cult-of-the-eternal-night",
+      "ritual-leader",
+      "troll-like",
+      "chaos-magic",
+      "melee",
+      "leader",
+      "fear-generation",
+      "ally-support"
+    ],
+    "references": {
+      "official": [
+        "Spectral Captain",
+        "Knight of the Realm",
+        "Secret-Keeper",
+        "Master Assassin",
+        "Cave Ogre"
+      ],
+      "cybermancy": [
+        "Mireborn Thrall Foreman",
+        "Bella",
+        "Abraxas modified Deer"
+      ]
+    },
+    "designerNotes": "Approved mechanical design. Momentum is the official Leader family. Cry of Ruin adapts the official Leader ally-spotlighting pattern of For the Realm!/Rally Guards. Chaotic Flux adapts the existing Chaotic Flux family upward from Tier 1 Support damage while retaining its multi-target stress-cost purpose. Violence Is Revelation adapts the Cave Ogre Rampaging Fury pattern into an on-damage counter-rampage. Gift of the Threshold is a new Abraxas-specific Fear-spend area-control effect using established reaction-roll, magic-damage, and forced-movement patterns. Relentless was intentionally omitted because this is a Leader supported by ritual allies, not a Solo."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Stay near the ritual and use Cry of Ruin early when several cultists can act meaningfully, forcing divided attention.",
+        "featureRefs": [
+          "Cry of Ruin"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "Use Rending Fists on one nearby target and gain Fear through Momentum. Use Chaotic Flux when multiple PCs cluster.",
+        "featureRefs": [
+          "Momentum",
+          "Chaotic Flux"
+        ]
+      },
+      {
+        "label": "When Hit Hard",
+        "text": "Use Violence Is Revelation to reposition toward the ritual, vulnerable prey, or a disruptive location.",
+        "featureRefs": [
+          "Violence Is Revelation"
+        ]
+      },
+      {
+        "label": "Spend Fear",
+        "text": "Use Gift of the Threshold primarily to break formations or displace PCs from objectives; damage is secondary.",
+        "featureRefs": [
+          "Gift of the Threshold"
+        ]
+      },
+      {
+        "label": "If Allies Thin",
+        "text": "Stop investing Stress in Cry of Ruin and shift toward direct bruiser and control play.",
+        "featureRefs": [
+          "Cry of Ruin"
+        ]
+      }
+    ],
+    "goal": "Conduct a chaotic battle through followers, Fear, and forced movement instead of becoming a stationary sack of HP."
+  },
+  "mechanics": {
+    "difficulty": 16,
+    "damageThresholds": {
+      "major": 13,
+      "severe": 25
+    },
+    "hitPoints": 8,
+    "stress": 5,
+    "attack": {
+      "name": "Rending Fists",
+      "bonus": 4,
+      "range": "melee",
+      "damage": {
+        "count": 2,
+        "die": "d8",
+        "bonus": 5,
+        "types": [
+          "physical"
+        ]
+      }
+    },
+    "experiences": [
+      {
+        "name": "Intimidation",
+        "value": 3
+      },
+      {
+        "name": "Ritual Lore",
+        "value": 3
+      }
+    ],
+    "features": [
+      {
+        "name": "Momentum",
+        "featureType": "reaction",
+        "rules": "When the Cult Leader makes a successful attack against a PC, you gain a Fear.",
+        "automation": "text",
+        "tags": [
+          "leader",
+          "fear-generation",
+          "attack-trigger",
+          "reaction"
+        ]
+      },
+      {
+        "name": "Cry of Ruin",
+        "featureType": "action",
+        "rules": "Mark a Stress to spotlight up to 1d4+1 Cult of the Eternal Night allies within Far range. Attacks they make while spotlighted this way deal half damage.",
+        "automation": "text",
+        "tags": [
+          "leader",
+          "ally-support",
+          "spotlight",
+          "stress-cost",
+          "coordination"
+        ]
+      },
+      {
+        "name": "Chaotic Flux",
+        "featureType": "action",
+        "rules": "Make an attack against up to three targets within Very Close range. Mark a Stress to deal 2d8+4 magic damage to each target the Cult Leader succeeds against.",
+        "automation": "text",
+        "tags": [
+          "attack",
+          "magic-damage",
+          "multi-target",
+          "stress-cost"
+        ]
+      },
+      {
+        "name": "Violence Is Revelation",
+        "featureType": "reaction",
+        "rules": "When the Cult Leader marks 2 or more HP from a single attack, they can immediately move anywhere within Close range, smashing through creatures and terrain in their path. Every target they pass within Melee range of must make a Strength Reaction Roll (16). On a failure, they take 2d6+5 physical damage and are knocked back to Very Close range. On a success, they take half damage and aren’t moved.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "movement",
+          "aoe",
+          "physical-damage",
+          "forced-movement",
+          "knockback",
+          "reaction-roll"
+        ]
+      },
+      {
+        "name": "Gift of the Threshold",
+        "featureType": "fear",
+        "rules": "Spend a Fear and choose a point within Far range. Reality buckles in a Very Close area around that point. All creatures there must make an Instinct Reaction Roll (16). On a failure, they take 2d8+3 magic damage and the GM moves them anywhere within Very Close range of their original position. On a success, they take half damage and aren’t moved.",
+        "automation": "text",
+        "tags": [
+          "fear-spend",
+          "aoe",
+          "magic-damage",
+          "forced-movement",
+          "reaction-roll",
+          "control"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/abraxas-cult-leader.png",
+      "aspectRatio": "4:5",
+      "width": 1000,
+      "height": 1250,
+      "prompt": "Cinematic semi-photorealistic dark cybermancy fantasy portrait of the Abraxas Cult Leader, a huge troll-like ritual hierophant in a cavern temple. Massive muscular body, broad menacing face, multiple protruding tusk-like fangs, ritual scars and shifting purple-black Abraxas markings across the flesh, chains and scavenged ritual ornaments, ecstatic violent expression. One huge hand is raised with chaotic violet reality-warping magic twisting around the fingers while the other is poised for brutal melee violence. Cultists and ritual fire are indistinct in the background. Believable anatomy first, supernatural corruption second, strong readable silhouette, dramatic cavern lighting, no text, labels, logos, stat blocks, borders, or UI."
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/abraxas-cult-leader-token.png",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Square Foundry token matching the Abraxas Cult Leader portrait. Tight face and upper-torso composition of the same huge tusked troll-like hierophant, glowing violet eyes, fangs, ritual scars, and chaotic purple magic readable at token scale. Thick distressed dark-metal circular rim nearly touching the square edges; corners outside the circle solid black. No text, labels, logos, or transparent corners."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Mechanical design approved by GM and generated through the Cybermancy Adversary & Environment Pipeline Contract using Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

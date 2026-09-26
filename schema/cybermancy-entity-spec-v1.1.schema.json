@@ -1,0 +1,611 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cybermancy.local/schema/entity-spec-v1.1.json",
+  "title": "Cybermancy Adversary & Environment Canonical Specification v1.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "specVersion",
+    "entityType",
+    "identity",
+    "design",
+    "fastPlay",
+    "mechanics",
+    "art",
+    "foundry",
+    "print"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "specVersion": {
+      "const": "1.1"
+    },
+    "entityType": {
+      "enum": [
+        "adversary",
+        "environment"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "slug",
+        "tier",
+        "classification",
+        "concept",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "tier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "classification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "concept": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encounterPurpose",
+        "tags",
+        "references"
+      ],
+      "properties": {
+        "encounterPurpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "motivesAndTactics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "impulses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "references": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "official",
+            "cybermancy"
+          ],
+          "properties": {
+            "official": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "cybermancy": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "designerNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "mechanics": {
+      "type": "object"
+    },
+    "art": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "portrait": {
+          "$ref": "#/$defs/artAsset"
+        },
+        "token": {
+          "$ref": "#/$defs/artAsset"
+        },
+        "environment": {
+          "$ref": "#/$defs/artAsset"
+        }
+      }
+    },
+    "foundry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetCoreVersion",
+        "targetSystemVersion",
+        "attributionSource"
+      ],
+      "properties": {
+        "targetCoreVersion": {
+          "type": "string"
+        },
+        "targetSystemVersion": {
+          "type": "string"
+        },
+        "attributionSource": {
+          "type": "string"
+        },
+        "folderStrategy": {
+          "enum": [
+            "target-config",
+            "none"
+          ]
+        },
+        "tokenRing": {
+          "type": "boolean"
+        }
+      }
+    },
+    "print": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pageTarget",
+        "style",
+        "includeArt"
+      ],
+      "properties": {
+        "pageTarget": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "style": {
+          "const": "cybermancy-daggerheart-reference"
+        },
+        "includeArt": {
+          "type": "boolean"
+        },
+        "designerNotes": {
+          "type": "string"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed",
+            "approved"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "fastPlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompts",
+        "goal"
+      ],
+      "properties": {
+        "prompts": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/fastPlayPrompt"
+          }
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "$defs": {
+    "artAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "prompt"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aspectRatio": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 256
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 256
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "featureType",
+        "rules"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "featureType": {
+          "enum": [
+            "passive",
+            "action",
+            "reaction",
+            "fear",
+            "stress",
+            "triggered",
+            "countdown",
+            "special"
+          ]
+        },
+        "rules": {
+          "type": "string",
+          "minLength": 1
+        },
+        "automation": {
+          "enum": [
+            "text",
+            "native-action"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fastPlayPrompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "text",
+        "featureRefs"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 36
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "featureRefs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "entityType": {
+            "const": "adversary"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "identity": {
+            "properties": {
+              "classification": {
+                "enum": [
+                  "solo",
+                  "leader",
+                  "bruiser",
+                  "standard",
+                  "minion",
+                  "horde",
+                  "ranged",
+                  "skulk",
+                  "support",
+                  "social"
+                ]
+              }
+            }
+          },
+          "mechanics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "difficulty",
+              "damageThresholds",
+              "hitPoints",
+              "stress",
+              "attack",
+              "experiences",
+              "features"
+            ],
+            "properties": {
+              "difficulty": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "damageThresholds": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "major",
+                  "severe"
+                ],
+                "properties": {
+                  "major": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "severe": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  }
+                }
+              },
+              "hitPoints": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "stress": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "hordeHp": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "attack": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "bonus",
+                  "range",
+                  "damage"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bonus": {
+                    "type": "integer"
+                  },
+                  "range": {
+                    "enum": [
+                      "melee",
+                      "veryClose",
+                      "close",
+                      "far",
+                      "veryFar"
+                    ]
+                  },
+                  "damage": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "die",
+                      "bonus",
+                      "types"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "die": {
+                        "enum": [
+                          "d4",
+                          "d6",
+                          "d8",
+                          "d10",
+                          "d12",
+                          "d20"
+                        ]
+                      },
+                      "bonus": {
+                        "type": "integer"
+                      },
+                      "types": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "enum": [
+                            "physical",
+                            "magical"
+                          ]
+                        }
+                      },
+                      "customFormula": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "experiences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "value"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "value": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              },
+              "features": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/feature"
+                }
+              },
+              "physicalResistance": {
+                "type": "boolean"
+              },
+              "magicalResistance": {
+                "type": "boolean"
+              }
+            }
+          },
+          "art": {
+            "required": [
+              "portrait",
+              "token"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entityType": {
+            "const": "environment"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "identity": {
+            "properties": {
+              "classification": {
+                "enum": [
+                  "exploration",
+                  "traversal",
+                  "social",
+                  "event"
+                ]
+              }
+            }
+          },
+          "mechanics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "difficulty",
+              "impulses",
+              "potentialAdversaries",
+              "features"
+            ],
+            "properties": {
+              "difficulty": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "impulses": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "potentialAdversaries": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "features": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/feature"
+                }
+              }
+            }
+          },
+          "art": {
+            "required": [
+              "environment"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Cavelor Finn",
+    "slug": "cavelor-finn",
+    "tier": 2,
+    "classification": "solo",
+    "concept": "A half-elf professional assassin and surveillance specialist hired to shadow the team, identify their employers and objectives, and kill one or more members only when a clean opportunity presents itself.",
+    "description": "A lean half-elf assassin who treats observation as the real job and violence as an optional conclusion. Finn works from prepared hides with suppressed weapons, custom toxins, and multiple escape routes, refusing any fight that becomes fair."
+  },
+  "design": {
+    "encounterPurpose": "A recurring Tier 2 Solo pressure adversary who primarily creates surveillance tension during Adventure 3, but can turn an isolated or exposed PC into a lethal assassination opportunity before disengaging rather than committing to open combat.",
+    "motivesAndTactics": [
+      "observe",
+      "identify employers",
+      "isolate targets",
+      "strike from concealment",
+      "poison survivors",
+      "break contact"
+    ],
+    "tags": [
+      "half-elf",
+      "assassin",
+      "surveillance",
+      "sniper",
+      "poison",
+      "suppressed-weapons",
+      "stealth",
+      "escape",
+      "corporate-retaliation",
+      "solo"
+    ],
+    "references": {
+      "official": [
+        "Battle Box",
+        "Assassin Poisoner",
+        "Jagged Knife Shadow",
+        "Master Assassin"
+      ],
+      "cybermancy": [
+        "Liminal Research Drone",
+        "Bella",
+        "Sewerjaw Gator"
+      ]
+    },
+    "designerNotes": "Mechanical design approved by the GM. Relentless (2) supplies Tier 2 Solo action economy. Ghost Position adapts official concealment/mobility patterns. Finn's Compound adapts the Assassin Poisoner venom pattern. Exit Strategy is the signature disengagement mechanic, ensuring Finn does not become a stationary boss. The canonical schema has one standard attack field, so Suppressed Pistol is the standard attack and Precision Rifle is represented as a feature action; Prepared Shot modifies that feature attack. Dead Drop models off-screen preparation and surveillance infrastructure without pre-mapping every cache or distraction."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Shadow the team unseen until Finn has a clean assassination opportunity or another compelling reason to reveal himself.",
+        "featureRefs": [
+          "Precision Rifle",
+          "Prepared Shot"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "From Hidden, use Precision Rifle to trigger Prepared Shot against exposed prey, then reset with Ghost Position rather than trade attacks.",
+        "featureRefs": [
+          "Precision Rifle",
+          "Prepared Shot",
+          "Ghost Position"
+        ]
+      },
+      {
+        "label": "If Pressed",
+        "text": "Use Exit Strategy when disengagement matters. Use Dead Drop when preparation can restore concealment, create escape, or disrupt pursuit.",
+        "featureRefs": [
+          "Exit Strategy",
+          "Dead Drop"
+        ]
+      },
+      {
+        "label": "Fallback",
+        "text": "Use Suppressed Pistol when close engagement is already advantageous; if the fight becomes fair, break contact.",
+        "featureRefs": []
+      },
+      {
+        "label": "Remember",
+        "text": "Relentless (2) permits a second spotlight but does not make it free. Any hit that marks HP triggers Finn's Compound.",
+        "featureRefs": [
+          "Relentless (2)",
+          "Finn's Compound"
+        ]
+      }
+    ],
+    "goal": "Make the PCs feel watched, suddenly endangered, then uncertain whether Finn is truly gone."
+  },
+  "mechanics": {
+    "difficulty": 16,
+    "damageThresholds": {
+      "major": 12,
+      "severe": 23
+    },
+    "hitPoints": 8,
+    "stress": 5,
+    "attack": {
+      "name": "Suppressed Pistol",
+      "bonus": 4,
+      "range": "far",
+      "damage": {
+        "count": 2,
+        "die": "d8",
+        "bonus": 3,
+        "types": [
+          "physical"
+        ]
+      }
+    },
+    "experiences": [
+      {
+        "name": "Surveillance",
+        "value": 3
+      },
+      {
+        "name": "Infiltration",
+        "value": 3
+      },
+      {
+        "name": "Assassination",
+        "value": 3
+      }
+    ],
+    "features": [
+      {
+        "name": "Relentless (2)",
+        "featureType": "passive",
+        "rules": "Cavelor Finn can be spotlighted up to two times per GM turn. Spend Fear as usual to spotlight him.",
+        "automation": "text",
+        "tags": [
+          "solo",
+          "relentless",
+          "action-economy",
+          "spotlight"
+        ]
+      },
+      {
+        "name": "Precision Rifle",
+        "featureType": "action",
+        "rules": "Make an attack against a target within Very Far range with a +4 attack bonus. On a success, deal 2d10+4 physical damage.",
+        "automation": "text",
+        "tags": [
+          "attack",
+          "ranged",
+          "sniper",
+          "physical-damage"
+        ]
+      },
+      {
+        "name": "Ghost Position",
+        "featureType": "action",
+        "rules": "Mark a Stress to become Hidden and immediately move anywhere within Close range that provides plausible concealment or cover.",
+        "automation": "text",
+        "tags": [
+          "stress-cost",
+          "hidden",
+          "stealth",
+          "movement",
+          "reposition"
+        ]
+      },
+      {
+        "name": "Prepared Shot",
+        "featureType": "passive",
+        "rules": "When Finn makes a successful Precision Rifle attack while Hidden, deal 3d10+4 physical damage instead of the standard Precision Rifle damage.",
+        "automation": "text",
+        "tags": [
+          "attack",
+          "hidden",
+          "sniper",
+          "physical-damage",
+          "bonus-damage"
+        ]
+      },
+      {
+        "name": "Finn's Compound",
+        "featureType": "passive",
+        "rules": "A target who marks HP from one of Finn's attacks becomes Vulnerable until they clear an HP.",
+        "automation": "text",
+        "tags": [
+          "poison",
+          "debuff",
+          "vulnerable",
+          "attack-trigger"
+        ]
+      },
+      {
+        "name": "Exit Strategy",
+        "featureType": "reaction",
+        "rules": "When Finn marks 2 or more HP from a single attack, or when a PC moves into Melee range of him, he can mark a Stress to immediately move anywhere within Far range that he could plausibly reach using terrain, a prepared line, concealed passage, vehicle, grapnel, or similar escape route. He becomes Hidden at the end of this movement if he reaches cover.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "stress-cost",
+          "movement",
+          "escape",
+          "hidden",
+          "reposition"
+        ]
+      },
+      {
+        "name": "Dead Drop",
+        "featureType": "fear",
+        "rules": "Spend a Fear to reveal that Finn prepared a surveillance device, concealed weapon cache, escape line, or remotely triggered distraction at a plausible location in the scene. Finn may immediately use that preparation to either move anywhere within Far range and become Hidden, or force all creatures within Very Close range of the revealed device to make an Agility Reaction Roll (16). On a failure, they mark 2 Stress and become Vulnerable until their next action.",
+        "automation": "text",
+        "tags": [
+          "fear-spend",
+          "preparation",
+          "surveillance",
+          "movement",
+          "hidden",
+          "aoe",
+          "reaction-roll",
+          "stress",
+          "vulnerable"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/cavelor-finn.png",
+      "aspectRatio": "4:5",
+      "width": 1000,
+      "height": 1250,
+      "prompt": "Cinematic semi-photorealistic cyberpunk fantasy portrait of Cavelor Finn, a lean adult half-elf professional assassin and surveillance specialist. Sharp angular features, pointed ears, dark undercut hair swept to one side, subtle facial scars or minimalist tattoos, cold analytical expression. Matte black rainproof tactical clothing and cloak adapted for Seattle and Cascade wilderness, discreet body armor, suppressed pistol in one hand and long precision sniper rifle with optic carried ready across the body. Practical climbing line, compact surveillance gear, poison ampoules and small field pouches visible but understated. He is crouched in a rain-dark elevated hide overlooking distant post-Resonance Seattle infrastructure and forest, prepared to observe rather than charge. Believable person first, professional assassin second, no glowing magic, no text, labels, logos, stat block, UI, or borders."
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/cavelor-finn-token.png",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Square Foundry token matching the Cavelor Finn portrait exactly: same half-elf assassin, same dark undercut hair, facial markings, black rainproof tactical clothing, and precision rifle. Tight face and upper-torso composition readable at token scale, alert cold expression, rainy blue-black city-and-forest background. Enclose the scene inside a thick distressed dark-metal circular rim nearly touching the square edges; corners outside the circle solid black. No text, labels, logos, or transparent corners."
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Mechanical design approved by GM and generated through the Cybermancy Adversary & Environment Pipeline Contract using Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

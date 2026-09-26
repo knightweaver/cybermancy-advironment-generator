@@ -1,0 +1,87 @@
+{
+  "status": "pass",
+  "date": "2026-08-16",
+  "productionStandard": "1.1",
+  "pipelineContract": "1.1",
+  "frontEndStandard": "1.1",
+  "entitySpec": "1.1",
+  "packageBuilder": "1.2.1",
+  "featureLibrary": "1.0.0 unchanged",
+  "foundryTarget": "13.351",
+  "daggerheartTarget": "1.2.7",
+  "automatedRegression": "PASS: 8 fixtures, schema/Foundry/all-eight PDF renderer + geometry checks",
+  "actualArtRegression": [
+    {
+      "slug": "abraxas-cult-leader",
+      "entity": "Abraxas Cult Leader",
+      "status": "pass",
+      "fastPlayWords": 103,
+      "pdfPages": 1,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "abraxas-ritual-cave",
+      "entity": "Abraxas ritual cave",
+      "status": "pass",
+      "fastPlayWords": 110,
+      "pdfPages": 2,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "altered-coyote",
+      "entity": "Altered Coyote",
+      "status": "pass",
+      "fastPlayWords": 107,
+      "pdfPages": 1,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "altered-threshold-cougar",
+      "entity": "Altered Threshold Cougar",
+      "status": "pass",
+      "fastPlayWords": 110,
+      "pdfPages": 1,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "cascade-burrowtail",
+      "entity": "Cascade Burrowtail",
+      "status": "pass",
+      "fastPlayWords": 87,
+      "pdfPages": 1,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "cascadia-mountain-valley",
+      "entity": "Cascadia Mountain Valley",
+      "status": "pass",
+      "fastPlayWords": 110,
+      "pdfPages": 2,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "cavelor-finn",
+      "entity": "Cavelor Finn",
+      "status": "pass",
+      "fastPlayWords": 108,
+      "pdfPages": 1,
+      "pdfGate": "pass"
+    },
+    {
+      "slug": "clevermask",
+      "entity": "Clevermask",
+      "status": "pass",
+      "fastPlayWords": 101,
+      "pdfPages": 2,
+      "pdfGate": "pass"
+    }
+  ],
+  "rendererFixes": [
+    "Measured spacing before MOTIVES & TACTICS",
+    "Baseline-aligned EXPERIENCE label/value row",
+    "Collision-safe attack summary at 10 pt minimum",
+    "Content-aware environment summary and potential-adversary boxes",
+    "Adversary left-column overflow detection",
+    "Rendered-PDF geometry/font/safe-area validation"
+  ]
+}

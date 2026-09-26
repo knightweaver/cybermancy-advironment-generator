@@ -1,0 +1,181 @@
+{
+  "$schema": "../../schema/cybermancy-entity-spec-v1.1.schema.json",
+  "specVersion": "1.1",
+  "entityType": "adversary",
+  "identity": {
+    "name": "Altered Coyote",
+    "slug": "altered-coyote",
+    "tier": 1,
+    "classification": "standard",
+    "concept": "Coyotes from the Cascade foothills warped by Abraxas-aligned ritual Resonance into smarter, more aggressive pack hunters. Their coordination becomes unnaturally precise as the pack grows, and individuals sometimes move in exact synchrony as though sharing one nervous system.",
+    "description": "A lean Cascade coyote marked by subtle Abraxan ritual corruption, hunting with an eerie collective intelligence that makes a gathering pack far more dangerous than any individual animal."
+  },
+  "design": {
+    "encounterPurpose": "A Tier 1 Standard pack hunter that teaches the players to disrupt encirclement and separate coordinated altered wildlife before the pack's scaling damage can overwhelm isolated targets.",
+    "motivesAndTactics": [
+      "encircle",
+      "isolate",
+      "flank",
+      "test defenses",
+      "overwhelm isolated prey",
+      "retreat and reform"
+    ],
+    "tags": [
+      "animal",
+      "coyote",
+      "abraxas",
+      "ritual-corruption",
+      "pack",
+      "coordination",
+      "aggressive",
+      "pacific-northwest"
+    ],
+    "references": {
+      "official": [
+        "Harrier",
+        "Sylvan Soldier",
+        "Jagged Knife Bandit"
+      ],
+      "cybermancy": [
+        "Abraxas modified Deer",
+        "Raz Eels"
+      ]
+    },
+    "designerNotes": "The chassis follows the approved Tier 1 Standard band used by Harrier, Sylvan Soldier, and Jagged Knife Bandit, while remaining closely compatible with the accepted Abraxas modified Deer. Pack Tactics adapts the official Tier 1 Sylvan Soldier Pack tactics family and the gold-standard Raz Eels implementation, adding a second damage step when a genuinely large coyote pack surrounds the same target. Shared Nervous System is a restrained new coordination reaction informed by Daggerheart group-movement patterns: it creates synchronized repositioning without granting an extra attack. The approved play pattern is intentionally weak when solitary and increasingly dangerous as multiple coyotes establish a surround."
+  },
+  "fastPlay": {
+    "prompts": [
+      {
+        "label": "Opening",
+        "text": "Spread out to encircle the party. Identify an isolated or exposed PC as immediate prey.",
+        "featureRefs": [
+          "Pack Tactics"
+        ]
+      },
+      {
+        "label": "Default",
+        "text": "Bite the chosen target after establishing Pack Tactics whenever possible; the pack is intentionally weaker when isolated.",
+        "featureRefs": [
+          "Pack Tactics"
+        ]
+      },
+      {
+        "label": "Reposition",
+        "text": "Use Shared Nervous System when the Stress spend will establish or preserve Pack Tactics, close an escape route, or reform the surround.",
+        "featureRefs": [
+          "Shared Nervous System",
+          "Pack Tactics"
+        ]
+      },
+      {
+        "label": "Pressure",
+        "text": "Concentrate on isolated prey. If PCs break formation, reform the surround instead of fighting as scattered individuals.",
+        "featureRefs": [
+          "Pack Tactics"
+        ]
+      },
+      {
+        "label": "Remember",
+        "text": "Pack Tactics replaces normal Bite damage. Its highest tier requires three other Coyotes; Shared Nervous System grants movement only.",
+        "featureRefs": [
+          "Pack Tactics",
+          "Shared Nervous System"
+        ]
+      }
+    ],
+    "goal": "Make formation the pack's danger and reward PCs who separate, shove, restrain, scatter, or remove individual Coyotes."
+  },
+  "mechanics": {
+    "difficulty": 12,
+    "damageThresholds": {
+      "major": 5,
+      "severe": 10
+    },
+    "hitPoints": 4,
+    "stress": 2,
+    "hordeHp": 1,
+    "attack": {
+      "name": "Bite",
+      "bonus": 1,
+      "range": "melee",
+      "damage": {
+        "count": 1,
+        "die": "d6",
+        "bonus": 2,
+        "types": [
+          "physical"
+        ]
+      }
+    },
+    "experiences": [
+      {
+        "name": "Pack Hunter",
+        "value": 2
+      }
+    ],
+    "features": [
+      {
+        "name": "Pack Tactics",
+        "featureType": "passive",
+        "rules": "When the Altered Coyote succeeds on a standard attack and another Altered Coyote is within Melee range of the target, deal 1d8+3 physical damage instead of the standard damage. If three or more other Altered Coyotes are within Very Close range of the target, deal 1d8+5 physical damage instead.",
+        "automation": "text",
+        "tags": [
+          "attack",
+          "bonus-damage",
+          "group",
+          "pack",
+          "physical-damage",
+          "damage-scaling"
+        ]
+      },
+      {
+        "name": "Shared Nervous System",
+        "featureType": "reaction",
+        "rules": "Once per spotlight, when another Altered Coyote within Close range moves, this Coyote can mark a Stress to immediately move up to Close range. It does not gain an additional attack from this movement.",
+        "automation": "text",
+        "tags": [
+          "reaction",
+          "stress-cost",
+          "movement",
+          "reposition",
+          "group",
+          "coordination",
+          "resonance"
+        ]
+      }
+    ],
+    "physicalResistance": false,
+    "magicalResistance": false
+  },
+  "art": {
+    "portrait": {
+      "path": "modules/cybermancy/assets/images/adversaries/altered-coyote.png",
+      "prompt": "Cinematic semi-photorealistic cyberpunk-horror creature portrait of a Pacific Northwest coyote in a rain-dark Cascade mountain forest east of Seattle. The animal remains recognizably a real coyote with believable anatomy, lean wet fur and alert predatory posture, but Abraxas-aligned ritual Resonance has subtly corrupted it: faint ember-red spiral scar patterns beneath patches of fur, uncanny amber-red reflected eyes, and tiny asymmetries that feel biologically wrong rather than technological. In the misty forest behind it, two or three other coyotes stand at different distances yet hold eerily identical body posture and head angle, suggesting a shared nervous system without literal psychic effects or visible magic beams. Faint distant red-orange ritual glow filters between dark fir trunks, contrasting with cool teal-blue rain and moss. Strong readable silhouette, tense low three-quarter view, grounded naturalistic wildlife photography fused with restrained occult horror, no text, labels, logos, UI, borders, or stat block.",
+      "aspectRatio": "4:5"
+    },
+    "token": {
+      "path": "modules/cybermancy/assets/tokens/adversaries/altered-coyote-token.png",
+      "prompt": "Square Foundry VTT token matching the Altered Coyote portrait exactly: the same lean Pacific Northwest coyote identity, wet mottled gray-brown fur, uncanny amber-red eyes, and subtle ember-red spiral ritual scars beneath the fur. Tight frontal three-quarter composition of head, shoulders, and upper torso with a threatening alert expression, readable clearly at 100-150 px. Dark rain-soaked Cascade forest and faint distant ritual glow behind it. Enclose the scene inside a thick distressed dark-metal circular rim nearly touching the square edges; corners outside the circle are solid opaque black. No text, labels, logos, UI, or transparent corners.",
+      "aspectRatio": "1:1",
+      "width": 1254,
+      "height": 1254
+    }
+  },
+  "foundry": {
+    "targetCoreVersion": "14.368",
+    "targetSystemVersion": "2.10.5",
+    "attributionSource": "Cybermancy",
+    "folderStrategy": "target-config",
+    "tokenRing": true
+  },
+  "print": {
+    "pageTarget": 1,
+    "style": "cybermancy-daggerheart-reference",
+    "includeArt": true,
+    "designerNotes": "Single-adversary compact GM reference: stat card in left column, portrait art in right column, optional Encounter Use note beneath art."
+  },
+  "provenance": {
+    "status": "approved",
+    "notes": "Approved by GM after Front-End v1 mechanical review; built under CYBERMANCY_PIPELINE_CONTRACT v1.0 through Package Builder v1.1. Migrated to Entity Spec v1.1 for Fast Play v1."
+  }
+}

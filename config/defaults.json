@@ -1,0 +1,10 @@
+{
+  "foundryCoreVersion": "14.368",
+  "daggerheartSystemVersion": "2.10.5",
+  "adversaryFolderId": null,
+  "environmentFolderId": null,
+  "packageBuilderVersion": "1.4.0",
+  "packageFormat": "cybermancy-entity-package-v1",
+  "pdfStyle": "cybermancy-daggerheart-reference",
+  "minimumBodyFontPt": 10
+}
