@@ -10,6 +10,8 @@ Repository source for the Cybermancy adversary/environment authoring pipeline. V
 4. Validate and build with the commands below; review the PDF and `validation.json`.
 5. Follow `docs/LIVE_VALIDATION.md` before accepting runtime compatibility. For eventual module publication, use the identity and release boundary in `docs/INTEGRATION.md`.
 
+Approved new entities can be staged into a Cybermancy checkout using `src/publish_to_cybermancy.py`. It refuses changes to previously published Actors until their IDs are explicitly reconciled.
+
 ```bash
 python -m pip install -r requirements.txt
 python tests/test_pipeline.py
